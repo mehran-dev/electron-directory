@@ -1,0 +1,112 @@
+html, body {
+  margin: 0;
+}
+
+[disabled] {
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.window {
+  background-color: #fff;
+  transition: background-color 0.2s;
+  box-shadow: inset 0 0 2px rgba(125, 74, 74, 0.22)
+}
+
+.maximized {
+  background-color: #000;
+}
+
+.window::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  transition: background-color 0.25s;
+}
+
+.dragover::after {
+  z-index: 10;
+  background-color: rgba(211, 211, 211, 0.85);
+}
+
+#display {
+  width: 100vw;
+  height: calc(100vh - 35px);
+  margin-top: 35px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.maximized #display {
+  height: 100vh;
+  margin-top: 0;
+}
+
+header {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  top: 0;
+}
+
+.maximized header {
+  display: none;
+  -webkit-drag: none;
+}
+
+#current-of-display {
+  min-width: 100px;
+  box-shadow: none;
+}
+
+#drag-drop {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+#drag-drop p {
+  width: 100%;
+  color: darkgray;
+  transition: color 0.25s;
+}
+
+.dragover #drag-drop p {
+  color: black;
+}
+
+.color-picker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.color-picker-visible .color-picker {
+  z-index: 3;
+  opacity: 1;
+}
+
+.color-picker input {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: calc(50% - 50px);
+  top: calc(50% - 50px);
+  padding: 3px 5px;
+}
+
+.filename {
+  color: #00FF00;
+  padding: 2px 5px;
+}
