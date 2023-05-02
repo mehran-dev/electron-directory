@@ -4,9 +4,27 @@
     <title>Directory Shower</title>
     <link rel="stylesheet" href="photon/css/photon.css" />
     <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .image-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .image-container img {
+        max-width: 300px;
+        max-height: 300px;
+        margin: 10px;
+      }
+    </style>
   </head>
   <body>
     <ul id="dirList"></ul>
+    <div class="image-container"></div>
+
     <script src="app.js"></script>
   </body>
 </html>

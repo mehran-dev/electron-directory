@@ -40,3 +40,19 @@ function listFiles(dir, filelist) {
 }
 
 exports.listFiles = listFiles
+
+function getImages(dir, filelist) {
+  const files = fs.readdirSync(dir)
+  filelist = filelist || []
+  files.forEach(function (file) {
+    const fullPath = path.join(dir, file)
+    if (fs.statSync(fullPath).isDirectory()) {
+      filelist = getImages(fullPath, filelist)
+    } else if (/\.(jpe?g|png|gif|bmp)$/i.test(file)) {
+      filelist.push(fullPath)
+    }
+  })
+  return filelist
+}
+
+exports.getImages = getImages
